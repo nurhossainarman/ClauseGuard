@@ -41,3 +41,5 @@ prisma/migrations/
 
 # Built files
 *.tsbuildinfo
+PLAN.md
+concerns.md
