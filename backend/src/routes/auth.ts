@@ -2,11 +2,10 @@ import { Router, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { PrismaClient } from "@prisma/client";
+import { getPrismaClient } from "../db.js";
 import type { AuthRequest, AuthResponse } from "../types.js";
 
 const router = Router();
-const prisma = new PrismaClient();
 
 const authSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -16,6 +15,7 @@ const authSchema = z.object({
 // Register endpoint
 router.post("/register", async (req: Request, res: Response) => {
   try {
+    const prisma = await getPrismaClient();
     const { email, password } = authSchema.parse(req.body);
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -50,6 +50,7 @@ router.post("/register", async (req: Request, res: Response) => {
 // Login endpoint
 router.post("/login", async (req: Request, res: Response) => {
   try {
+    const prisma = await getPrismaClient();
     const { email, password } = authSchema.parse(req.body);
 
     const user = await prisma.user.findUnique({ where: { email } });

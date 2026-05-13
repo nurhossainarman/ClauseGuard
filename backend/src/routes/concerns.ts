@@ -1,12 +1,12 @@
 import { Router, Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import { getPrismaClient } from "../db.js";
 
 const router = Router();
-const prisma = new PrismaClient();
 
 // Get all concerns
 router.get("/", async (req: Request, res: Response) => {
   try {
+    const prisma = await getPrismaClient();
     const concerns = await prisma.concern.findMany({
       orderBy: { category: "asc" },
     });
@@ -25,6 +25,7 @@ router.get("/", async (req: Request, res: Response) => {
 // Get concerns by category
 router.get("/category/:category", async (req: Request, res: Response) => {
   try {
+    const prisma = await getPrismaClient();
     const { category } = req.params;
     const concerns = await prisma.concern.findMany({
       where: { category },
