@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
+import authRouter from "./routes/auth.js";
+import concernsRouter from "./routes/concerns.js";
+import { authenticateToken } from "./middleware/auth.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,9 +16,17 @@ app.use(cors({
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// Health check
+// Routes
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date() });
+});
+
+app.use("/api/auth", authRouter);
+app.use("/api/concerns", concernsRouter);
+
+// Protected route example
+app.get("/api/me", authenticateToken, (req, res) => {
+  res.json({ userId: req.userId, email: req.userEmail });
 });
 
 // Start server
