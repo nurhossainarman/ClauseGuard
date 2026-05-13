@@ -32,3 +32,12 @@ coverage/
 
 # Prisma
 .prisma/
+prisma/migrations/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Built files
+*.tsbuildinfo

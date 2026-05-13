@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  scans     Scan[]
+}
+
+model Concern {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  keywords    String    // JSON stringified array or comma-separated
+  category    String
+  severity    String
+
+  scanResults ScanResult[]
+}
+
+model Scan {
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  documentName String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user         User        @relation(fields: [userId], references: [id])
+  results      ScanResult[]
+}
+
+model ScanResult {
+  id          Int       @id @default(autoincrement())
+  scanId      Int
+  concernId   Int
+  matchedText String
+  context     String
+  position    Int
+
+  scan        Scan      @relation(fields: [scanId], references: [id])
+  concern     Concern   @relation(fields: [concernId], references: [id])
+}
