@@ -1,11 +1,18 @@
-import type { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
 let client: PrismaClient | null = null;
 
-export async function getPrismaClient(): Promise<PrismaClient> {
+export function getPrismaClient(): PrismaClient {
   if (client) return client;
 
-  const { PrismaClient: PC } = await import("@prisma/client");
-  client = new PC() as unknown as PrismaClient;
+  const adapter = new PrismaBetterSqlite3({
+    url: process.env.DATABASE_URL || "file:./dev.db",
+  });
+
+  client = new PrismaClient({
+    adapter,
+    log: ["error", "warn"],
+  });
   return client;
 }

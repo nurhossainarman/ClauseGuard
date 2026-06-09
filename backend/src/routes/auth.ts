@@ -15,7 +15,7 @@ const authSchema = z.object({
 // Register endpoint
 router.post("/register", async (req: Request, res: Response) => {
   try {
-    const prisma = await getPrismaClient();
+    const prisma = getPrismaClient();
     const { email, password } = authSchema.parse(req.body);
 
     const existingUser = await prisma.user.findUnique({ where: { email } });

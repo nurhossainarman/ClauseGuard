@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import authRouter from "./routes/auth.js";
 import concernsRouter from "./routes/concerns.js";
+import scansRouter from "./routes/scans.js";
 import { authenticateToken } from "./middleware/auth.js";
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/concerns", concernsRouter);
+app.use("/api/scans", scansRouter);
 
 // Protected route example
 app.get("/api/me", authenticateToken, (req, res) => {

@@ -6,7 +6,7 @@ const router = Router();
 // Get all concerns
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const prisma = await getPrismaClient();
+    const prisma = getPrismaClient();
     const concerns = await prisma.concern.findMany({
       orderBy: { category: "asc" },
     });
@@ -18,6 +18,7 @@ router.get("/", async (req: Request, res: Response) => {
       }))
     );
   } catch (error) {
+    console.error("Concerns fetch error:", error);
     res.status(500).json({ error: "Failed to fetch concerns" });
   }
 });
@@ -25,7 +26,7 @@ router.get("/", async (req: Request, res: Response) => {
 // Get concerns by category
 router.get("/category/:category", async (req: Request, res: Response) => {
   try {
-    const prisma = await getPrismaClient();
+    const prisma = getPrismaClient();
     const { category } = req.params;
     const concerns = await prisma.concern.findMany({
       where: { category },
@@ -38,6 +39,7 @@ router.get("/category/:category", async (req: Request, res: Response) => {
       }))
     );
   } catch (error) {
+    console.error("Category concerns fetch error:", error);
     res.status(500).json({ error: "Failed to fetch concerns" });
   }
 });
