@@ -192,43 +192,11 @@ npm run build
 # Push to Railway with your Railway config
 ```
 
-## 📝 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Contributions are welcome!
 
-## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
-Please ensure:
-- Code is typed with TypeScript
-- Components are documented
-- Tests pass (when applicable)
-- Commit messages are clear and descriptive
 
-## 📧 Contact & Support
 
-- **Author** — [Nur Hossain Arman](https://github.com/nurhossainarman)
-- **Email** — nharman.ca@gmail.com
-- **Project** — [ClauseGuard on GitHub](https://github.com/nurhossainarman/ClauseGuard)
-
-## 🙋 FAQ
-
-**Q: How accurate is the analysis?**  
-A: ClauseGuard uses pattern matching for 20+ known privacy concern clauses. While highly accurate for common red flags, it's not a substitute for legal review for critical contracts.
-
-**Q: Can I use ClauseGuard for commercial contracts?**  
-A: Yes! ClauseGuard works with any text-based document, though it's optimized for privacy and terms documents.
-
-**Q: Is my document data stored?**  
-A: Only if you create an account and save analyses. You can also use ClauseGuard without saving.
-
----
-
-**Built with ❤️ by [Nur Hossain Arman](https://github.com/nurhossainarman)**
