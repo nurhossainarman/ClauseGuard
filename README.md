@@ -24,21 +24,7 @@ ClauseGuard scans documents for 20+ known privacy concerns and highlights them w
 
 - ✅ **20+ Pre-defined Concerns** — Data sharing, tracking, retention, security, billing, legal red flags
 - ✅ **Concern Filtering** — Select only what matters to you
-- ✅ **Smart Matching** — Fuzzy keyword search with context extraction
-- ✅ **Scan History** — Track and compare documents over time
 - ✅ **Easy Upload** — Paste text or upload PDF
-- ✅ **Privacy-First** — Your data is yours; we don't sell or track
-
----
-
-## Quick Start
-
-1. Sign up at [clauseguard.vercel.app](https://clauseguard.vercel.app)
-2. Select which concerns matter to you
-3. Upload a T&C or paste text
-4. Review highlighted matches
-5. Make an informed decision
-
 ---
 
 ## Tech Stack
@@ -49,12 +35,6 @@ ClauseGuard scans documents for 20+ known privacy concerns and highlights them w
 - **Deployment:** Vercel (frontend), Railway (backend)
 
 ---
-
-## Development
-
-See [PLAN.md](PLAN.md) for the 3-week build roadmap.
-
-See [concerns.md](concerns.md) for the full list of privacy concerns.
 
 ### Local Setup
 
@@ -80,26 +60,3 @@ cd frontend
 npm run dev
 ```
 
----
-
-## Roadmap
-
-- **Week 1:** MVP with keyword matching and basic UI
-- **Week 2:** Concern filtering, improved matching, scan history
-- **Week 3:** Production deployment, documentation, polish
-
----
-
-## Contributing
-
-This is a portfolio project built in 3 weeks. Feedback welcome!
-
----
-
-## License
-
-MIT
-
----
-
-**Questions?** Open an issue or reach out at nharman.ca@gmail.com
